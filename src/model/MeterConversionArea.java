@@ -10,11 +10,12 @@ public class MeterConversionArea extends JTextArea {
 	public MeterConversionArea() {
 		Rectangle rect = new Rectangle(220, 10, HEIGHT, WIDTH);
 		this.setBounds(rect);
-		this.setText("0");
+		this.setText(0 + " m");
 		this.setBackground(Color.orange);
 	}
 
 	public void update(double meter){
-        setText(meter + " ft");
+//		System.out.println("update meter:"+meter);
+        this.setText(meter + " m");
     }
 }

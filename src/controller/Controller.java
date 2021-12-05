@@ -4,27 +4,26 @@ import model.ValueToConvert;
 import view.Display;
 
 public class Controller {
-	Display display;
-	ValueToConvert vtc;
-	double meter;
-	double feet;
-	double cm;
+	static Display display;
+	static ValueToConvert vtc;
+	static double meter;
+	static double feet;
+	static double cm;
 
 	public Controller() {
-		this.display = new Display();
-		cm = Double.parseDouble(this.display.getCMText());
+		display = new Display();
+		vtc = new ValueToConvert(Double.parseDouble(display.getCMText()));
 		
-		this.vtc = new ValueToConvert(cm);
-		this.meter = this.vtc.getMETER();
-		this.feet = this.vtc.getFEET();
-		display.updateValues(meter, feet);
-		updateListener();
+		display.setListener(e -> {
+			cm = Double.parseDouble(display.getCMText());
+			meter = vtc.getMETER(cm);
+			feet = vtc.getFEET(cm);
+//			System.out.println(feet+" "+meter);
+			display.updateValues(meter, feet);
+		});
 	}
 
 	public void updateListener() {
-		this.display.setListener(e -> {
-			this.vtc.setCM(this.cm);
-			this.display.updateValues(meter, feet);
-		});
+		
 	}
 }

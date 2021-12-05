@@ -10,11 +10,12 @@ public class FeetConversionArea extends JTextArea {
 	public FeetConversionArea() {
 		Rectangle rect = new Rectangle(10, 10, HEIGHT, WIDTH);
 		this.setBounds(rect);
-		this.setText("0");
+		this.setText(0 + " ft");
 		this.setBackground(Color.green);
 	}
 	
 	public void update(double feet){
-        setText(feet + " ft");
+//		System.out.println("update feet:"+feet);
+        this.setText(feet + " ft");
     }
 }

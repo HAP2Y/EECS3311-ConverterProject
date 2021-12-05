@@ -13,30 +13,33 @@ import model.MeterConversionArea;
 public class Display extends JFrame {
 	final static int HEIGHT = 600;
 	final static int WIDTH = 600;
-	private static final FeetConversionArea FEET = new FeetConversionArea();
-	private static final MeterConversionArea METER = new MeterConversionArea();
-	private static final CentimetersConversionArea CM = new CentimetersConversionArea();
-	private final JMenuItem listener;
+	private static FeetConversionArea FEET = new FeetConversionArea();
+	private static MeterConversionArea METER = new MeterConversionArea();
+	private static CentimetersConversionArea CM = new CentimetersConversionArea();
+	static JMenuItem listener;
+	static JMenuBar menubar;
+    static JMenu menu;
+    static JPanel panel;
 	
 	public Display() {		
-		JMenuBar menuBar = new JMenuBar();
-		JMenu menu = new JMenu("Update Model");
-		JPanel panel = new JPanel();
-
+		this.setBounds(0, 0, HEIGHT, WIDTH);
+		this.setTitle("");
 		this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		this.listener = new JMenuItem("Save input centimeters");
-		this.add(menu);
-		this.setJMenuBar(menuBar);
-		this.add(listener);
+		menubar = new JMenuBar();
+		panel = new JPanel();
+		menu = new JMenu("Update Model");
+		listener = new JMenuItem("Save input centimeters");
+		
+		menubar.add(menu);
+		menu.add(listener);
+		
+		this.setJMenuBar(menubar);
 		this.add(FEET);
 		this.add(METER);
 		this.add(CM);
 		this.add(panel);
-		
-		this.setBounds(0,0, HEIGHT, WIDTH);
-		this.setTitle("");
 		this.setVisible(true);
 	}
 	
